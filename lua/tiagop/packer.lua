@@ -46,6 +46,8 @@ return require('packer').startup(function(use)
             {'j-hui/fidget.nvim'},
         }
     }
+    use('nvimtools/none-ls.nvim')
+    use('jay-babu/mason-null-ls.nvim')
     use {
         "nvim-neotest/neotest",
         requires = {
