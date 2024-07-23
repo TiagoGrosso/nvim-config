@@ -71,3 +71,6 @@ vim.keymap.set("n", "<A-w>", "<Cmd>BufferClose<CR>")
 --                 :BufferCloseBuffersRight
 -- Magic buffer-picking mode
 vim.keymap.set("n", "<A-s>", "<Cmd>BufferPick<CR>")
+
+-- Terminal
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
