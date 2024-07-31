@@ -43,12 +43,17 @@ local capabilities =
     vim.tbl_deep_extend("force", {}, vim.lsp.protocol.make_client_capabilities(), cmp_lsp.default_capabilities())
 
 require("fidget").setup({})
-require("mason").setup({})
+require("mason").setup({
+    registries = {
+        "github:nvim-java/mason-registry",
+        "github:mason-org/mason-registry",
+    },
+})
 require("mason-lspconfig").setup({
     ensure_installed = {
         "lua_ls",
         "tsserver",
-        "java_language_server",
+        "jdtls",
         "svelte",
         "denols",
     },
@@ -81,6 +86,20 @@ require("mason-lspconfig").setup({
             lspconfig.tsserver.setup({
                 root_dir = lspconfig.util.root_pattern("package.json"),
                 single_file_support = false,
+            })
+        end,
+        jdtls = function()
+            require("java").setup({
+                verification = {
+                    -- Setting to false because it's annoying to get an error when sourcing this file
+                    -- At this point I know the setup is correct
+                    -- The error is not thrown on startup, just on sourcing this file after changes
+                    invalid_order = false,
+                    duplicate_setup_calls = false,
+                }
+            })
+
+            require("lspconfig").jdtls.setup({
             })
         end,
     },
