@@ -19,6 +19,11 @@
 > [!WARNING]
 > I'll move to [https://github.com/folke/lazy.nvim](Lazy) when I'm not lazy but for now Packer works perfectly well
 
+## Java
+
+I use [SKDMAN](https://sdkman.io/install) to manage Java version.
+Install SDKMAN and a Java version >17 (`jdtls` requires it) with it.
+
 ## Install Packer
 
 Just run this:

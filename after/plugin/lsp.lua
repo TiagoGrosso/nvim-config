@@ -90,16 +90,32 @@ require("mason-lspconfig").setup({
         end,
         jdtls = function()
             require("java").setup({
+                jdk = {
+                    auto_install = false,
+                },
                 verification = {
                     -- Setting to false because it's annoying to get an error when sourcing this file
                     -- At this point I know the setup is correct
                     -- The error is not thrown on startup, just on sourcing this file after changes
                     invalid_order = false,
                     duplicate_setup_calls = false,
-                }
+                },
             })
 
             require("lspconfig").jdtls.setup({
+                settings = {
+                    java = {
+                        configuration = {
+                            runtimes = {
+                                {
+                                    name = "Sdkman Java",
+                                    path = "~/.sdkman/candidates/java/current/bin/java",
+                                    default = true,
+                                },
+                            },
+                        },
+                    },
+                },
             })
         end,
     },

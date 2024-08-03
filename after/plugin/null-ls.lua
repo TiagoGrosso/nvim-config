@@ -18,6 +18,6 @@ null_ls.setup({
 })
 
 require("mason-null-ls").setup({
-	ensure_installed = { "stylua", "jq", "prettierd" },
+	ensure_installed = { "stylua", "jq", "prettierd", "google-java-format" },
 	handlers = {},
 })
