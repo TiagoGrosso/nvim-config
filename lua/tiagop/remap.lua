@@ -32,7 +32,6 @@ vim.keymap.set("n", "<leader>d", '"_d')
 vim.keymap.set("v", "<leader>d", '"_d')
 
 -- neotest
-
 vim.keymap.set("n", "<leader>r", ":lua require('neotest').run.run()<cr>")
 vim.keymap.set("n", "<leader><c-s>", ":lua require('neotest').run.stop()<cr>")
 vim.keymap.set("n", "<leader><c-a>", ":lua require('neotest').run.attach()<cr>")
@@ -74,3 +73,6 @@ vim.keymap.set("n", "<A-s>", "<Cmd>BufferPick<CR>")
 
 -- Terminal
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
+
+-- Format file
+vim.keymap.set("n", "<C-A-L>", ":lua vim.lsp.buf.format()<CR>")
