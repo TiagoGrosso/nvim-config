@@ -41,9 +41,6 @@ vim.keymap.set("n", "<leader>O", ":lua require('neotest').output.open({enter = t
 vim.keymap.set("n", "<leader>o", ":lua require('neotest').output_panel.toggle()<CR>")
 vim.keymap.set("n", "<leader>s", ":lua require('neotest').summary.toggle()<CR>")
 
--- fine-cmdline
-vim.api.nvim_set_keymap("n", "<CR>", "<cmd>FineCmdline<CR>", { noremap = true })
-
 -- barbar
 vim.keymap.set("n", "<A-,>", "<Cmd>BufferPrevious<CR>")
 vim.keymap.set("n", "<A-.>", "<Cmd>BufferNext<CR>")

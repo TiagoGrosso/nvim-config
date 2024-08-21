@@ -91,8 +91,6 @@ return require("packer").startup(function(use)
 	use("lewis6991/gitsigns.nvim")
 	-- UI Component Library
 	use("MunifTanjim/nui.nvim")
-	-- Popup command line
-	use("VonHeikemen/fine-cmdline.nvim")
 	-- Notiication API
 	use("rcarriga/nvim-notify")
 	-- File Explorer
