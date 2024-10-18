@@ -24,3 +24,6 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "150"
 
 vim.g.mapleader = " "
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
