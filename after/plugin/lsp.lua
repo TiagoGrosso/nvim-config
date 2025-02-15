@@ -45,17 +45,18 @@ local capabilities =
 require("fidget").setup({})
 require("mason").setup({
 	registries = {
-		"github:nvim-java/mason-registry",
 		"github:mason-org/mason-registry",
 	},
 })
 require("mason-lspconfig").setup({
 	ensure_installed = {
 		"lua_ls",
-		"tsserver",
-		"jdtls",
+		"ts_ls",
 		"svelte",
 		"denols",
+		"tailwindcss",
+		"html",
+		"cssls",
 	},
 	handlers = {
 		function(server_name)
@@ -81,66 +82,17 @@ require("mason-lspconfig").setup({
 				root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc", "deno.lock"),
 			})
 		end,
-		["tsserver"] = function()
+		["ts_ls"] = function()
 			local lspconfig = require("lspconfig")
-			lspconfig.tsserver.setup({
+			lspconfig.ts_ls.setup({
 				root_dir = lspconfig.util.root_pattern("package.json"),
 				single_file_support = false,
-			})
-		end,
-		jdtls = function()
-			require("java").setup({
-				jdk = {
-					auto_install = false,
-				},
-				verification = {
-					-- Setting to false because it's annoying to get an error when sourcing this file
-					-- At this point I know the setup is correct
-					-- The error is not thrown on startup, just on sourcing this file after changes
-					invalid_order = false,
-					duplicate_setup_calls = false,
-				},
-			})
-
-			require("lspconfig").jdtls.setup({
-				settings = {
-					java = {
-						configuration = {
-							runtimes = {
-								{
-									name = "Sdkman Java",
-									path = "~/.sdkman/candidates/java/current/bin/java",
-									default = true,
-								},
-							},
-						},
-					},
-				},
 			})
 		end,
 	},
 })
 
-local cmp = require("cmp")
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
-
-cmp.setup({
-	snippet = {
-		expand = function(args)
-			require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
-		end,
-	},
-	mapping = cmp.mapping.preset.insert({
-		["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-		["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-		["<C-y>"] = cmp.mapping.confirm({ select = true }),
-		["<C-Space>"] = cmp.mapping.complete(),
-	}),
-	sources = cmp.config.sources({
-		{ name = "nvim_lsp" },
-		{ name = "nvim_lsp_signature_help" },
-		{ name = "luasnip" }, -- For luasnip users.
-	}, {
-		{ name = "buffer" },
-	}),
+-- tailwind-tools sets up the tailwind lsp, so don't put in above
+require("tailwind-tools").setup({
+	-- your configuration
 })

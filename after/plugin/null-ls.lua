@@ -7,10 +7,9 @@ null_ls.setup({
 		if client.supports_method("textDocument/formatting") then
 			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
 			vim.api.nvim_create_autocmd("BufWritePre", {
-				group = augroup,
-				buffer = bufnr,
-				callback = function()
-					vim.lsp.buf.format()
+				pattern = "*",
+				callback = function(args)
+					require("conform").format({ bufnr = args.buf })
 				end,
 			})
 		end
@@ -18,6 +17,6 @@ null_ls.setup({
 })
 
 require("mason-null-ls").setup({
-	ensure_installed = { "stylua", "jq", "prettier", "google-java-format", "eslint_d" },
+	ensure_installed = { "stylua", "jq", "prettier" },
 	handlers = {},
 })

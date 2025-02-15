@@ -49,21 +49,16 @@ return require("packer").startup(function(use)
 			{ "j-hui/fidget.nvim" },
 		},
 	})
-	-- Better Java
+	-- Formatter
 	use({
-		"nvim-java/nvim-java",
-		requires = {
-			{ "nvim-java/lua-async-await" },
-			{ "nvim-java/nvim-java-refactor" },
-			{ "nvim-java/nvim-java-core" },
-			{ "nvim-java/nvim-java-test" },
-			{ "nvim-java/nvim-java-dap" },
-			{ "MunifTanjim/nui.nvim" },
-			{ "neovim/nvim-lspconfig" },
-			{ "mfussenegger/nvim-dap" },
-			{ "JavaHello/spring-boot.nvim" },
-		},
+		"stevearc/conform.nvim",
+		config = function()
+			require("conform").setup()
+		end,
 	})
+	-- For tailwind
+	use("luckasRanarison/tailwind-tools.nvim")
+	use("onsails/lspkind-nvim") -- Pictograms <-- cool for tailwind colors
 	-- aka null-ls -> use LSP for more functionality like diagnostics
 	use("nvimtools/none-ls.nvim")
 	-- lsp-zero <-> null-ls bridge
@@ -76,7 +71,6 @@ return require("packer").startup(function(use)
 			"nvim-lua/plenary.nvim",
 			"antoinemadec/FixCursorHold.nvim",
 			"nvim-treesitter/nvim-treesitter",
-			"rcasia/neotest-java",
 			"marilari88/neotest-vitest",
 			"nvim-neotest/neotest-jest",
 		},
