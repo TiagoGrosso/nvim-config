@@ -48,3 +48,9 @@ git clone https://github.com/TiagoGrosso/nvim-config\
 
 1. Open any dir with `nvim .` (e.g the config dir)
 1. Run `:PackerSync`
+
+# Ideavim
+
+I also use the Ideavim plugin in IntelliJ. My config for it is currently pretty
+bare but it's included here under .ideavimrc. If you want to use you can create
+a symlink from it to `~/.ideavimrc` and IntelliJ should pick it up.
